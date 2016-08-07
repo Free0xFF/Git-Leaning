@@ -1,0 +1,5 @@
+1. Git是一个版本控制工具。
+2. Git一个所谓的分支就是一个新的版本。一个新的版本是前一个版本的副本，然后基于该副本上修改。每个git工程都有一个master分支，所有提交的修改最终都会合并到master分支。
+3. 整个流程是：Create Repository -> modify  -> create pull request  -> merge pull request(commit),其中pull request并没有将改变提交到master，而仅仅呈现一种改变，当检查确认无误后，就可以提交啦，提交之后，所有的改变将会在master分支可以看到。
+4. master分支最终的版本是所有commit之后的合集。按照commit的先后顺序先后改变其内容。
+5. 由于保存了先后的分支，如果commit之后想撤销，回退到之前的版本，可以通过重新创建一个新的pull request,然后选择对应的分支进行提交。也就是回退到之前的版本。
