@@ -1,0 +1,94 @@
+Git使用方法
+
+get started
+
+指定git仓库配置
+1. git config --global user.name "guiyongmao"
+2. git config --global user.email "guiyongmao@163.com"
+
+创建版本库: 在d盘的www目录下创建一个新的testgit版本库
+$ cd D:
+$ cd www
+$ mkdir testgit
+$ cd testgit
+$ pwd
+
+将testgit目录变成
+$ git init //目录下生成.git目录，从此不要在乱动该目录
+
+把文件添加到版本库中
+在库目录下添加readme.txt文件，内容为1111
+$ git add readme.txt //把文件添加到版本库
+$ git commit //把文件提交到仓库
+$ git status //查看提交状态
+
+修改readme.txt的内容
+$ git status
+$ git diff readme.txt //查看改动情况
+
+提交修改
+$ git add readme.txt
+$ git commit
+
+版本回退
+$ git log //显示由近到远的日志
+$ git log --pretty=oneline //日志按行显示
+$ git reset -hard HEAD^ //回退到上一个版本
+$ git reset -hard HEAD^^ //回退到上上个版本
+$ git reset -hard HEAD~100 //回退到前100个版本
+$ git reflog //显示版本号
+$ git reset -hard 版本号  //回退到之前的某个版本或恢复某个版本
+$ git reset -hard 6fcfc89 //例如
+
+工作区与版本库
+工作区： 电脑上看到的目录，如目录testgit里面的文件
+版本库： 工作区里的.git目录，该目录下的stage即暂存区
+
+$ git add 即把文件存放到暂存区
+$ git commit把内容提交更改，即把暂存区的文件添加到当前分支
+
+撤销修改和删除
+--撤销
+可以改源文件；也可以回退版本；或
+$ git checkout -- file //丢弃工作区内容，没放暂存区的都会丢弃
+
+--删除
+$ git add b.txt
+$ git commit
+$ rm b.txt
+$ git status
+$ git commit || git checkout... //彻底提交或恢复
+
+
+远程仓库
+注册github账号，由于本地git仓库和github仓库之间的传输是ssh加密的，需如下设置
+1. 创建SSH Key
+$ ssh-keygen -t rsa -C "guiyongmao@163.com"
+然后cd ~/.ssh
+
+2. 登录github,打开” settings”中的SSH Keys页面，然后点击"Add SSH Key",填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。
+
+实现远程github仓库和本地目录仓库同步或协作
+1. 登录github上，然后在右上角找到“create a new repo”创建一个新的仓库testgit.
+2. 点击Create repository.
+
+可克隆新仓库，也可把一个已有的本地仓库与之关联，软后把本地的内容推送到GitHub仓库。
+
+$ git remote add origin https://githhub.com/guiyongmao/testgit.git
+$ git push -u origin master //把本地仓库分支master内容推送到元仓库去，首次要加 -u
+
+之后，只要本地做了提交，就可通过如下命令把内容推送到远程
+$ git push origin master
+
+
+从远程库克隆，也就是下载
+1. 登录github, 创建一个新的仓库testgit2
+2. 使用git clone克隆一个本地库
+$ git clone http://github.com/guiyongmao/testgit2
+3. 本地就会生成testgit2目录了
+
+创建与合并分支
+
+
+
+
